@@ -17,6 +17,10 @@ https://www.frontendmentor.io/challenges/tip-calculator-app-ugJNGbJUX
 4. Hit "calculate" button.
 5. Enjoy the results or hit "reset" and start again. 
 
+## Current status:
+
+Work in progress
+
 ## To do's:
 
 1. For now tip calculation works only for first button - add that to remaining ones.
