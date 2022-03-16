@@ -5,6 +5,7 @@
   --p4: #adc2a9;
   --p4: #99a799;
   --p5: white;
+  --p6: #6a7e66;
 }
 
 * {
@@ -16,6 +17,7 @@
 
 body {
   background-color: var(--p1);
+
   font-family: Montserrat;
   min-height: 100vh;
   min-width: 100vw;
@@ -93,12 +95,16 @@ body {
   width: fit-content;
 }
 
-.button--reset {
-  align-self: flex-end;
+.button--reset,
+.button--calculate {
+  /* align-self: flex-end; */
   width: 100%;
+  height: 50px;
+  margin-bottom: 10px;
 }
 
-.button--reset button {
+.button--reset button,
+.button--calculate button {
   width: 100%;
   background-color: var(--p1);
   color: var(--p4);
@@ -111,7 +117,8 @@ body {
   margin-bottom: 10px;
 }
 
-.button--reset button:hover {
+.button--reset button:hover,
+.button--calculate button:hover {
   cursor: pointer;
   background-color: var(--p5);
   transition: 0.5s ease-in-out;
@@ -159,6 +166,10 @@ body {
   border-style: none;
   letter-spacing: 5px;
   text-align: center;
+}
+
+.button__clicked button {
+  background-color: var(--p1);
 }
 
 .panel--buttons button:hover {
@@ -238,4 +249,8 @@ body {
 .amount__field input {
   width: 40%;
   align-items: left;
+}
+
+.inputTip__textUP {
+  font-size: 20px;
 }

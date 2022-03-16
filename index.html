@@ -25,6 +25,7 @@
     <div class="container" id="container">
       <!-- Left side of the box -->
       <div class="container__left">
+        <!-- Panel - bills -->
         <div class="container__left--panel">
           <div class="panel__left--title">Bill</div>
           <div class="panel--bar">
@@ -32,6 +33,7 @@
             <input type="text" id="bill"></input>
           </div>
         </div>
+        <!-- Panel - buttons  -->
         <div class="container__left--panel">
           <div class="panel__left--title">Select tip %</div>
           <div class="panel--buttons">
@@ -40,9 +42,12 @@
             <button id="button15">15%</button>
             <button id="button25">25%</button>
             <button id="button50">50%</button>
-            <input type="text" id="tip"></input>
+
+            <!-- Custom tip input box -->
+            <input type="text" id="customTip" ></input>
           </div>
         </div>
+        <!-- Panel no. of people  -->
         <div class="container__left--panel">
           <div class="panel__left--title">Number of people</div>
           <div class="panel--bar">
@@ -55,6 +60,7 @@
       <!-- Right side of the box -->
       <div class="container__right">
         <div>
+          <!-- Panel - tip amout  -->
           <div class="container__right--panel">
             <div class="panel__right--text">
               <h2>Tip amount</h2>
@@ -65,6 +71,7 @@
               <span id="tip__person"></span>
             </div>
           </div>
+          <!-- Panel - total amount  -->
           <div class="container__right--panel">
             <div class="panel__right--text">
               <h2>Total amount</h2>
@@ -76,9 +83,24 @@
             </div>
           </div>
         </div>
+
+
+        <div class="user--buttons">
+
+        <!-- Panel - calculate button -->
+       
+        <div class="button--calculate">
+          <button id="calculate">CALCULATE</button>
+        </div>
+        
+        <!-- Panel - reset button -->
+       
         <div class="button--reset">
           <button id="reset">RESET</button>
         </div>
+
+        </div>      
+
       </div>
     </div>
     
