@@ -1,143 +1,118 @@
-// LEFT SIDE OF THE CONTAINER
-
-//Tip buttons
-const button5 = document.getElementById("button5");
-const button10 = document.getElementById("button10");
-const button15 = document.getElementById("button15");
-const button25 = document.getElementById("button25");
-const button50 = document.getElementById("button50");
-
-//Bill input
-
+//Define HTML elements
+const button__container = document.querySelector(".button__container");
 const bill__input = document.getElementById("bill");
+const people__input = document.getElementById("people");
+const button__reset = document.getElementById("button__reset");
+const button__calculate = document.getElementById("button__calculate");
+const tip__amount = document.getElementById("tip__amount");
+const total__amount = document.getElementById("total__amount");
 
-//Set default value for input
-bill__input.defaultValue = 0;
-
-//Clear default tip value on click
+//Clear inputs on click
 bill__input.addEventListener("click", () => {
+  console.log("bill field clicked");
   bill__input.value = " ";
-  logStatus();
 });
 
-//Right side buttons
-
-const buttonCalculate = document.getElementById("calculate");
-const buttonReset = document.getElementById("reset");
-
-//Custom tip amount
-let customTip1 = document.getElementById("customTip");
-customTip1.defaultValue = "Custom";
-
-//Container element
-
-const container = document.getElementById("container");
-
-//Set default amount of people
-people.defaultValue = 1;
-
-//Clear default people value on click
-people.addEventListener("click", () => {
-  people.value = " ";
+people__input.addEventListener("click", () => {
+  people__input.value = " ";
 });
-
-//RIGHT SIDE OF THE CONTAINER
-
-//Displayed values:
-
-let tip__person = document.getElementById("tip__person");
-tip__person.textContent = "0.00";
-let amount__person = document.getElementById("amount__person");
-amount__person.textContent = "0.00";
-
-//Reset button
-
-const reset = document.getElementById("reset");
 
 //Variables
+let tipPercentage = 100;
+let billAmount = 0;
+let peopleNo = 0;
+let tipAmount = 0;
+let totalAmount = 0;
 
-let tip__total_calculated;
-let tip__person_calculated;
-let amount__person_calculated;
-let currentTipPercentage;
+//Function to calculate results
+const calculateResult = () => {
+  billAmount = Number(bill__input.value);
+  peopleNo = Number(people__input.value);
 
-//Assign above function to buttons &
+  tipAmount = billAmount * (tipPercentage / 100);
+  totalAmount = (billAmount + tipAmount) / peopleNo;
 
-buttonTipPredefined(button5, 0.05);
-buttonTipPredefined(button10, 0.1);
-buttonTipPredefined(button15, 0.15);
-buttonTipPredefined(button25, 0.25);
-buttonTipPredefined(button50, 0.5);
+  tipAmount = tipAmount.toFixed(2);
+  totalAmount = totalAmount.toFixed(2);
 
-//Function to refresh tip value
+  tip__amount.value = "$" + tipAmount;
+  total__amount.value = "$" + totalAmount;
+};
 
-function refreshTip() {
-  if (customTip1.value != customTip1.defaultValue) {
-    currentTipPercentage = customTip.value;
+//tipButton class
+
+class tipButton {
+  constructor(tipValue) {
+    this.tipValue = tipValue;
+    this.htmlElement = function () {
+      const btn = document.createElement("button");
+      btn.innerHTML = this.tipValue + "%";
+      buttonElement.classList.add("tip--button");
+      return btn;
+    };
   }
 
-  logStatus();
+  // createButton() {
+  //   const btn = document.createElement("button");
+  //   btn.innerHTML = this.tipValue + "%";
+  //   buttonElement.classList.add("tip--button");
+  //   return btn;
+  // }
 }
 
-//Function for custom tip button
+//Function to render tip buttons
+const input_TipBtns_values = [0, 5, 10, 15, 25, 50];
 
-function buttonCustomTip(customTip) {
-  customTip.addEventListener("click", () => {
-    logStatus();
+const buttons_HTMLelements = [];
 
-    customTip.value = " ";
-  });
+const createTipButton = (button__value) => {
+  const btnHTMLelement = document.createElement("button");
+  btnHTMLelement.innerText = button__value + "%";
+  btnHTMLelement.id = "button" + button__value;
+  btnHTMLelement.classList.add("tip--button");
 
-  customTip.addEventListener("mouseleave", refreshTip);
+  return btnHTMLelement;
+};
 
-  container.addEventListener("click", refreshTip);
-}
+const test = createTipButton(10);
+console.log(test);
 
-//Invoke buttonCustomTip function for custom button
+button__container.appendChild(test);
 
-buttonCustomTip(customTip1);
+const test2 = document.getElementById(button10);
+console.log(test2);
+test2.addEventListener("click", () => {
+  test2.classList.add(".tip__button_clicked");
+});
+// const createTipButton = (tipvalue) => {
+//   const buttonElement = document.createElement("button");
+//   buttonElement.innerHTML = tipvalue + "%";
+//   buttonElement.id = tipvalue;
+//   buttonElement.classList.add("tip--button");
+//   buttonElement.addEventListener("click", () => {
+//     tipPercentage = tipvalue;
+//     console.log(tipPercentage + "was clicked");
+//     calculateResult();
+//   });
 
-//Function for calculate button
+//   return buttonElement;
+// };
 
-function calculateResult(button) {
-  button.addEventListener("click", () => {
-    bill = Number(bill__input.value);
-    bill = tip__total_calculated = bill * currentTipPercentage;
-    tip__person_calculated = tip__total_calculated / people;
-    tip__person.textContent = tip__person_calculated.toFixed(2);
+// const renderTipButtons = (buttonArray) => {
+//   buttonArray.forEach((button) => {
+//     let currentBtn = createTipButton(button);
+//     tipButtonsArray.push(currentBtn);
+//     button__container.appendChild(currentBtn);
+//   });
+// };
 
-    amount__person_calculated = bill / people + tip__person_calculated;
-    amount__person.textContent = amount__person_calculated.toFixed(2);
+// createTipButtons(input_TipBtns_values);
 
-    logStatus();
-  });
-}
+// Handle calculate button;
 
-calculateResult(buttonCalculate);
+button__calculate.addEventListener("click", () => {
+  calculateResult();
+});
 
-//Function for tip buttons with fixed value
-
-function buttonTipPredefined(button, tipValue) {
-  button.addEventListener("click", () => {
-    button.classList.add("button__clicked");
-
-    let bill = document.getElementById("bill").value;
-
-    let people = document.getElementById("people").value;
-
-    currentTipPercentage = tipValue;
-    tip__total_calculated = bill * currentTipPercentage;
-    tip__total_calculated = tip__total_calculated.toFixed(2);
-
-    logStatus();
-  });
-}
-
-function logStatus() {
-  console.log("Bill value: " + bill);
-  console.log("People: " + people);
-  console.log("Tip " + currentTipPercentage);
-  console.log("Total tip value: " + tip__total_calculated);
-  console.log("Total tip value per person: " + tip__person_calculated);
-  console.log("Total amount per person: " + amount__person_calculated);
-}
+//Render buttons
+// renderTipButtons(predefinedTipButtons);

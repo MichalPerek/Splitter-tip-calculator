@@ -16,95 +16,45 @@
   </head>
 
   <body id="body">
-    <!-- Title of app -->
-    <div class="app__title">
-      <div>SPLI</div>
-      <div>TTER</div>
-    </div>
-    <!-- Main box -->
-    <div class="container" id="container">
-      <!-- Left side of the box -->
+    <div class="title">SPLI <br />TTER</div>
+    <div class="container">
       <div class="container__left">
-        <!-- Panel - bills -->
-        <div class="container__left--panel">
-          <div class="panel__left--title">Bill</div>
-          <div class="panel--bar">
-            <div>$</div>
-            <input type="text" id="bill"></input>
-          </div>
+        <div class="user__input">
+          <h1 class="left">Enter bill amount:</h1>          
+          <input type="text" id="bill" placeholder="$ 0.00"></input>
         </div>
-        <!-- Panel - buttons  -->
-        <div class="container__left--panel">
-          <div class="panel__left--title">Select tip %</div>
-          <div class="panel--buttons">
-            <button id="button5">5%</button>
-            <button id="button10">10%</button>
-            <button id="button15">15%</button>
-            <button id="button25">25%</button>
-            <button id="button50">50%</button>
-
-            <!-- Custom tip input box -->
-            <input type="text" id="customTip" ></input>
-          </div>
-        </div>
-        <!-- Panel no. of people  -->
-        <div class="container__left--panel">
-          <div class="panel__left--title">Number of people</div>
-          <div class="panel--bar">
-            <img src="IMG/person.png" alt="" class="src" />
-            <input type="text" id="people"></input>
-          </div>
+        <h1 class="left">Select tip %:</h1>
+        <div class="button__container" id="buttons"></div>
+        <div class="user__input">
+          <h1 class="left">Enter number of people:</h1>
+          <input type="text" id="people" placeholder="0"></input>
         </div>
       </div>
-
-      <!-- Right side of the box -->
       <div class="container__right">
-        <div>
-          <!-- Panel - tip amout  -->
-          <div class="container__right--panel">
-            <div class="panel__right--text">
-              <h2>Tip amount</h2>
-              <h3>/ person</h3>
-            </div>
-            <div class="amount__field">
-              <h1>$</h1>
-              <span id="tip__person"></span>
-            </div>
+        <div class="container__right--displays">
+        <div class="display" id="display--tip__amount">
+          <div class="display__title">
+            <h1 class="right">Tip amount</h1>
+            <h2 class="right">/per order</h2>
           </div>
-          <!-- Panel - total amount  -->
-          <div class="container__right--panel">
-            <div class="panel__right--text">
-              <h2>Total amount</h2>
-              <h3>/ person</h3>
-            </div>
-            <div class="amount__field">
-              <h1>$</h1>
-              <span id="amount__person"></span>
-            </div>
+          <output id="tip__amount">0.00</output>
+        </div>
+        <div class="display" id="display--total__amount">
+          <div class="display__title">
+            <h1 class="right">Total amount</h1>
+            <h2 class="right">/person</h2>
           </div>
+        <output id="total__amount">0.00</output>
+        </div>
         </div>
 
-
-        <div class="user--buttons">
-
-        <!-- Panel - calculate button -->
-       
-        <div class="button--calculate">
-          <button id="calculate">CALCULATE</button>
-        </div>
-        
-        <!-- Panel - reset button -->
-       
-        <div class="button--reset">
-          <button id="reset">RESET</button>
-        </div>
-
-        </div>      
-
+          <div class="container__right--buttons">
+            <button id="button__reset">Reset</button>
+            <button id="button__calculate">Calculate</button>
+          </div>
       </div>
     </div>
-    
-
-    <script src="app.js"></script>
   </body>
+  <script  defer src="app.js" ></script>
+
 </html>
