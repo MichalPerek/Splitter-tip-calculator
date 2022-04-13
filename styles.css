@@ -96,15 +96,15 @@ h2 {
 }
 
 .tip__button_clicked {
-  background-color: var(--p6);
+  background-color: var(--p3);
 }
 
-.button__container button:hover {
+/* .button__container button:hover {
   cursor: pointer;
   background-color: var(--p1);
   color: var(--p4);
   transition: 0.5s ease-in-out;
-}
+} */
 
 .button__container {
   display: flex;

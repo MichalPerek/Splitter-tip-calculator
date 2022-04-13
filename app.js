@@ -39,46 +39,38 @@ const calculateResult = () => {
   total__amount.value = "$" + totalAmount;
 };
 
-//Function to render tip buttons
 const input_TipBtns_values = [0, 5, 10, 15, 25, 50];
 
-const buttons_HTMLelements = [];
+const createBtnHTMLElement = (value) => {
+  const btnHTMLelement = document.createElement("button");
+  btnHTMLelement.innerText = value + "%";
+  btnHTMLelement.id = "button" + value;
+  btnHTMLelement.classList.add("tip--button");
 
-function Tip__button(tip__value) {
-  this.tip__value = tip__value;
-  this.HTMLelement = document.createElement("button");
-  this.HTMLelement.innerText = tip__value + "%";
-  this.HTMLelement.id = "button" + tip__value;
-  this.HTMLelement.classList.add("tip--button");
-  this.was__clicked = false;
+  return btnHTMLelement;
+};
 
-  // this.HTMLelement.addEventListener("click", () => {
-  //   this.was__clicked = !this.was__clicked;
-  //   if (this.was__clicked === true) {
-  //     console.log("clicked tru");
-  //     this.HTMLelement.classList.add(".tip__button_clicked");
-  //   } else {
-  //     this.HTMLelement.classList.remove(".tip__button_clicked");
-  //     console.log("clicked false");
-  //     calculateResult();
-  //   }
-  // });
-}
+const clearClickedButtons = () => {
+  let clickedBtns = document.querySelectorAll(".tip__button_clicked");
 
-const button10 = new Tip__button(10);
-const button20 = new Tip__button(20);
+  clickedBtns.forEach((element) => {
+    element.classList.remove("tip__button_clicked");
+  });
+};
 
-button__container.appendChild(button10.HTMLelement);
-button__container.appendChild(button20.HTMLelement);
+const handleBtnClick = (tipBtn) => {
+  tipBtn.addEventListener("click", () => {
+    clearClickedButtons();
+    tipBtn.classList.add("tip__button_clicked");
+  });
+};
 
-button10.HTMLelement.addEventListener("click", () => {
-  button10.was__clicked = !button10.was__clicked;
-  if (button10.was__clicked === true) {
-    console.log("clicked tru");
-    button10.HTMLelement.classList.add(".tip__button_clicked");
-  } else {
-    button10.HTMLelement.classList.remove(".tip__button_clicked");
-    console.log("clicked false");
-    calculateResult();
-  }
-});
+const renderButtons = (buttonValues) => {
+  buttonValues.forEach((buttonValue) => {
+    const currentBtn = createBtnHTMLElement(buttonValue);
+    button__container.appendChild(currentBtn);
+    handleBtnClick(currentBtn);
+  });
+};
+
+renderButtons(input_TipBtns_values);
