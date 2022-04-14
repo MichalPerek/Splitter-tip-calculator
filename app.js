@@ -3,7 +3,6 @@ const button__container = document.querySelector(".button__container");
 const bill__input = document.getElementById("bill");
 const people__input = document.getElementById("people");
 const button__reset = document.getElementById("button__reset");
-const button__calculate = document.getElementById("button__calculate");
 const tip__amount = document.getElementById("tip__amount");
 const total__amount = document.getElementById("total__amount");
 
@@ -80,4 +79,19 @@ const renderButtons = (buttonValues) => {
   });
 };
 
+//Clear inputs and button selection
+
+const handleReset = () => {
+  bill__input.value = "$ 0.00";
+  people__input.value = "0";
+  clearClickedButtons();
+};
+
+//Render tip buttons
 renderButtons(input_TipBtns_values);
+
+//Handle resetbutton;
+
+button__reset.addEventListener("click", () => {
+  handleReset();
+});

@@ -120,7 +120,7 @@ output {
 
 .container__right--buttons button:hover {
   cursor: pointer;
-  background-color: var(--p2);
+  background-color: var(--p5);
   transition: 0.5s ease-in-out;
 }
 
