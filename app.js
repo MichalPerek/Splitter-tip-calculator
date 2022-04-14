@@ -24,7 +24,7 @@ let peopleNo = 0;
 let tipAmount = 0;
 let totalAmount = 0;
 
-//Function to calculate results
+//Function to calculate tip values & values per person
 const calculateResult = () => {
   billAmount = Number(bill__input.value);
   peopleNo = Number(people__input.value);
@@ -39,8 +39,10 @@ const calculateResult = () => {
   total__amount.value = "$" + totalAmount;
 };
 
-const input_TipBtns_values = [0, 5, 10, 15, 25, 50];
+//Array of tip values
+const input_TipBtns_values = [0, 5, 10, 15, 20, 25, 30, 50];
 
+//Function to create button HTML element
 const createBtnHTMLElement = (value) => {
   const btnHTMLelement = document.createElement("button");
   btnHTMLelement.innerText = value + "%";
@@ -50,6 +52,7 @@ const createBtnHTMLElement = (value) => {
   return btnHTMLelement;
 };
 
+//Function to remove highlight from clicked buttons
 const clearClickedButtons = () => {
   let clickedBtns = document.querySelectorAll(".tip__button_clicked");
 
@@ -58,18 +61,22 @@ const clearClickedButtons = () => {
   });
 };
 
-const handleBtnClick = (tipBtn) => {
-  tipBtn.addEventListener("click", () => {
+//Function to handle button click
+const handleBtnClick = (tipBtnElement, tipBtnValue) => {
+  tipBtnElement.addEventListener("click", () => {
     clearClickedButtons();
-    tipBtn.classList.add("tip__button_clicked");
+    tipBtnElement.classList.add("tip__button_clicked");
+    tipPercentage = tipBtnValue;
+    calculateResult();
   });
 };
 
+//Function to append button elements to button container
 const renderButtons = (buttonValues) => {
   buttonValues.forEach((buttonValue) => {
     const currentBtn = createBtnHTMLElement(buttonValue);
     button__container.appendChild(currentBtn);
-    handleBtnClick(currentBtn);
+    handleBtnClick(currentBtn, buttonValue);
   });
 };
 
